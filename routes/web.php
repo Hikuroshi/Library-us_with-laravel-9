@@ -26,13 +26,15 @@ Route::resource('/dashboard/books', BookController::class)->middleware('auth');
 
 Route::controller(PerpusController::class)->group(function(){
     Route::get('/', 'home');
+    Route::get('/books', 'index');
     Route::get('/books/{book:slug}', 'show');
 });
 
 Route::controller(LoginController::class)->group(function(){
     Route::get('/login', 'index')->name('login')->middleware('guest');
     Route::post('/login', 'authenticate');
-    Route::post('/logout', 'logout');
+    Route::get('/logout', 'logout');
+    // Route::post('/logout', 'logout');
 });
 
 Route::controller(RegisterController::class)->group(function(){

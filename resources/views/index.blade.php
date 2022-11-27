@@ -2,6 +2,32 @@
 
 @section('container')
 <div class="container">
+    <div class="row my-4">
+        <div class="col-md-6 m-auto">
+            <form action="/books">
+                @if(request('category'))
+                <input type="hidden" name="category" value="{{ request('category') }}">
+                @endif
+                @if(request('author'))
+                <input type="hidden" name="author" value="{{ request('author') }}">
+                @endif
+                <div class="input-group">
+                    <input class="form-control shadow-sm" type="search" placeholder="Search" name="search" value="{{ request('search') }}">
+                    <button type="submit" class="btn btn-danger">Search</button>
+                    <button type="button" class="btn btn-danger dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-expanded="false">
+                        <span class="visually-hidden">Filter</span>
+                    </button>
+                    <ul class="dropdown-menu">
+                        @foreach ($categories as $category)
+                            <li><a class="dropdown-item" href="/books?category={{ $category->slug }}">{{ $category->name }}</a></li>
+                        @endforeach
+                    </ul>
+                </div>
+            </form>
+            
+        </div>
+    </div>
+
     <div id="carouselExampleInterval" class="carousel slide" data-bs-ride="carousel">
         <div class="carousel-inner">
             <div class="carousel-item active" data-bs-interval="10000">
@@ -33,7 +59,7 @@
                     </a>
                     <div class="card-body">
                         <h5 class="card-title">{{ $book->name }}</h5>
-                        <p class="card-text">{{ $book->description }}</p>
+                        <p class="card-text">{{ Str::words($book->description, 30) }}</p>
                     </div>
                 </div>
             </div>

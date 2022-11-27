@@ -37,10 +37,27 @@
                     <li class="nav-item">
                         <a class="nav-link" href="#">About</a>
                     </li>
+                    @auth
+                        <li class="nav-item dropdown px-2">
+                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                Dashboard
+                            </a>
+                            <ul class="dropdown-menu mb-3">
+                                <li><a class="dropdown-item" href="/dashboard/books">Librarian</a></li>
+                                <li><a class="dropdown-item" href="/dashboard/posts">Dashboard Postingan</a></li>
+                            </ul>
+                        </li>
+                    @endauth
                 </ul>
-                <div class="d-flex">
+
+                @guest
+                    <li class="d-flex">
+                        <a class="btn btn-outline-primary btn-sm me-2 rounded-pill px-3" href="/login">Login</a>
+                    </li>
+                @endguest
+                {{-- <div class="d-flex">
                     <a href="/login" class="btn btn-outline-primary btn-sm me-2">Login</a>
-                </div>
+                </div> --}}
             </div>
         </div>
     </nav>

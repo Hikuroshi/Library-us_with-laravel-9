@@ -5564,7 +5564,7 @@ sidebar navigation
       margin-top: 6px; }
     .sidebar-nav > ul > li > a.active {
       font-weight: 400;
-      background: #242933;
+      background: #fff;
       color: #26c6da; }
   .sidebar-nav > ul > li {
     margin-bottom: 5px; }

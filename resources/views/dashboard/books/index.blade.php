@@ -1,4 +1,5 @@
 @extends('dashboard.layouts.main')
+
 @section('container')
     <div class="card">
         <div class="card-body">

@@ -3,6 +3,7 @@
 use App\Http\Controllers\BookController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\PerpusController;
+use App\Http\Controllers\RegisterController;
 use App\Models\Book;
 use Illuminate\Support\Facades\Route;
 use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
@@ -27,7 +28,7 @@ Route::resource('/dashboard/books', BookController::class)->middleware('auth');
 Route::controller(PerpusController::class)->group(function(){
     Route::get('/', 'home');
     Route::get('/books', 'index');
-    Route::get('/books/{book:slug}', 'show');
+    Route::get('/books/{book:slug}', 'show')->middleware('auth');
 });
 
 Route::controller(LoginController::class)->group(function(){
@@ -38,7 +39,7 @@ Route::controller(LoginController::class)->group(function(){
 });
 
 Route::controller(RegisterController::class)->group(function(){
-    Route::get('/register', 'index')->middleware('auth');
+    Route::get('/register', 'index');
     Route::post('/register', 'store');
 });
 

@@ -26,8 +26,13 @@
                             <label for="floatingPassword">Password</label>
                         </div>
                         
-                        <button type="submit" class="btn btn-primary px-4 shadow-sm">Login</button>
+                        <div class="d-grid my-4">
+                            <button type="submit" class="btn btn-primary px-4 shadow-sm">Login</button>
+                        </div>
                     </form>
+                    <div class="text-center">
+                        <small>Don't have an account? <a href="/register">Register here!</a></small>
+                    </div>
                 </div>
             </div>
         </div>

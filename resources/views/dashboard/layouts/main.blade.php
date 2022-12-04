@@ -65,8 +65,7 @@
             <div class="scroll-sidebar">
                 <nav class="sidebar-nav">
                     <ul id="sidebarnav">
-                        <li class="nav-devider"></li>
-                        <li class="nav-small-cap">Dashboard</li>
+                        <li class="nav-small-cap border-top">Dashboard</li>
                         <li>
                             <li> 
                                 <a class="waves-effect waves-dark active" href="#" aria-expanded="false"><i class="mdi mdi-view-dashboard"></i><span class="hide-menu">Books</span></a>

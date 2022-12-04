@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Perpustakaan</title>
+    <title>Library Us | {{ $title }}</title>
 
     <link rel="shortcut icon" type="image/jpg" href="/img/perpus-bg.png">
     {{-- <link rel="stylesheet" href="/css/bootstrap.min5.css"> --}}
@@ -52,7 +52,7 @@
 
                 @guest
                     <li class="d-flex">
-                        <a class="btn btn-outline-primary btn-sm me-2 rounded-pill px-3" href="/login">Login</a>
+                        <a class="btn btn-outline-primary btn-sm me-2 rounded-pill px-4" href="/login">Login</a>
                     </li>
                 @endguest
                 {{-- <div class="d-flex">

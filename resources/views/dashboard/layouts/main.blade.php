@@ -23,7 +23,7 @@
         <header class="topbar">
             <nav class="navbar top-navbar navbar-expand-md navbar-light">
                 <div class="navbar-header">
-                    <a class="navbar-brand" href="index.html">
+                    <a class="navbar-brand" href="/">
                         <b>
                             <img src="/img/perpus-bg.png" width="50" alt="homepage" class="dark-logo" />
                             <img src="/img/perpus-bg.png" width="50" alt="homepage" class="light-logo" />

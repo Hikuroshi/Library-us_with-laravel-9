@@ -30,6 +30,11 @@ class User extends Authenticatable
         return $this->hasMany(Book::class);
     }
 
+    public function saverBook()
+    {
+        return $this->belongsToMany(Book::class, 'book_savers');
+    }
+
     /**
      * The attributes that should be hidden for serialization.
      *

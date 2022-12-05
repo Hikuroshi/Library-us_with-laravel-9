@@ -23,7 +23,7 @@ use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 //     return view('welcome');
 // });
 
-Route::resource('/dashboard/books', BookController::class)->middleware('auth');
+Route::resource('/dashboard/books', BookController::class)->middleware('librarian');
 
 Route::controller(PerpusController::class)->group(function(){
     Route::get('/', 'home');

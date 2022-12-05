@@ -39,6 +39,11 @@ class Book extends Model
         return $this->belongsTo(User::class, 'user_id');
     }
 
+    public function saverUser()
+    {
+        return $this->belongsToMany(User::class, 'book_savers');
+    }
+
     public function category()
     {
         return $this->belongsTo(Category::class);

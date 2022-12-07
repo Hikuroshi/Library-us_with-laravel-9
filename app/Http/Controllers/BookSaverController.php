@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class BookSaverController extends Controller
@@ -10,7 +11,7 @@ class BookSaverController extends Controller
     {
         return view('dashboard.book-saver.index', [
             'title' => 'Book Saver',
-            'book_sv' => Book
-        ])
+            'myBook' => User::where('id', auth()->user()->id)->get(),
+        ]);
     }
 }

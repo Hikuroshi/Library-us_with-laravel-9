@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\BookController;
+use App\Http\Controllers\BookSaverController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\PerpusController;
 use App\Http\Controllers\RegisterController;
@@ -29,6 +30,10 @@ Route::controller(PerpusController::class)->group(function(){
     Route::get('/', 'home');
     Route::get('/books', 'index');
     Route::get('/books/{book:slug}', 'show')->middleware('auth');
+});
+
+Route::controller(BookSaverController::class)->group(function(){
+    Route::get('/dashboard/save-my-book', 'index');
 });
 
 Route::controller(LoginController::class)->group(function(){

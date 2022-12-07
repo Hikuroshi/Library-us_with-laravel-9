@@ -14,6 +14,7 @@
                             <th>Judul</th>
                             <th>Kategori</th>
                             <th>Deskripsi</th>
+                            <th>simpanan</th>
                             <th>Aksi</th>
                         </tr>
                     </thead>
@@ -27,6 +28,11 @@
                             <td>{{ $book->name }}</td>
                             <td>{{ $book->category->name }}</td>
                             <td>{{ $book->description }}</td>
+                            <td>
+                                @foreach ($book->saverUser as $item)
+                                    - {{ $item->name }} <br>
+                                @endforeach
+                            </td>
                             <td>
                                 <a href="show_siswa.html" data-toggle="tooltip" data-original-title="Lihat"><i class="fa fa-eye text-inverse m-r-10"></i> </a>
                                 <a href="/dashboard/books/{{ $book->slug }}/edit" data-toggle="tooltip" data-original-title="Edit"><i class="fa fa-pencil text-inverse m-r-10"></i></a>

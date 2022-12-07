@@ -24,6 +24,7 @@ class User extends Authenticatable
     // ];
 
     protected $guarded = ['id'];
+    // protected $with = ['books', 'saverBook'];
 
     public function books()
     {
@@ -32,7 +33,7 @@ class User extends Authenticatable
 
     public function saverBook()
     {
-        return $this->belongsToMany(Book::class, 'book_savers');
+        return $this->belongsToMany(Book::class, 'book_savers', 'user_id', 'book_id');
     }
 
     /**

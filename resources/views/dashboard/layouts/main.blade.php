@@ -104,16 +104,7 @@
                 </nav>
             </header>
             <div id="main-content">
-                <div class="page-heading">
-                    <div class="page-title">
-                        <h3>Vertical Layout with Navbar</h3>
-                        <p class="text-subtitle text-muted">Navbar will appear on the top of the page.</p>
-                    </div>
-                </div>
-
-                <div class="page-content">
-                    @yield('container')
-                </div>
+                @yield('container')
             </div>
         </div>
     </div>

@@ -20,6 +20,7 @@ return new class extends Migration
             $table->foreignIdFor(User::class);
             $table->string('name');
             $table->string('slug')->unique();
+            $table->string('writer');
             $table->foreignIdFor(Category::class);
             $table->string('description');
             $table->string('cover');

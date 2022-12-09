@@ -55,7 +55,7 @@
                     </div>
                     
                     <div class="form-group mb-4">
-                        <label for="description" class="form-label">Example textarea</label>
+                        <label for="description" class="form-label">Description <span class="text-danger">*</span></label>
                         <textarea name="description" id="description" rows="3" class="form-control @error('description') is-invalid @enderror" required placeholder="Deskripsi buku...">{{ old('description') }}</textarea>
                         @error('description')
                             <div class="invalid-feedback">
@@ -65,7 +65,7 @@
                     </div>
 
                     <div class="form-group mb-4">
-                        <label for="cover" class="form-label">Cover</label>
+                        <label for="cover" class="form-label">Cover <span class="text-danger">*</span></label>
                         <div class="input-group">
                             <input type="file" id="cover" accept="image/*" name="cover" class="form-control @error('cover') is-invalid @enderror" required>
                             @error('cover')
@@ -77,7 +77,7 @@
                     </div>
 
                     <div class="form-group mb-4">
-                        <label for="books_file" class="form-label">Isi</label>
+                        <label for="books_file" class="form-label">Book <span class="text-danger">*</span></label>
                         <div class="input-group">
                             <input type="file" id="books_file" accept="application/pdf" name="books_file" class="form-control @error('books_file') is-invalid @enderror" required>
                             @error('books_file')

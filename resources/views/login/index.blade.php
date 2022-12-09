@@ -1,38 +1,38 @@
 @extends('layouts.main')
 
 @section('container')
-<div class="container mt-5">
-    <div class="row justify-content-center my-5">
-        <div class="col-md-7 col-lg-5">
-            @if (session()->has('loginError'))
-            <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                {{ session('loginError') }}
-            </div>
-            @endif
-            <div class="card shadow mb-5">
-                <div class="card-header text-center pt-3">
-                    <h1 class="fw-bold">Login</h1>
+<div id="auth">
+    <div class="row h-100">
+        <div class="col-lg-5 col-12 m-auto">
+            <div id="auth-left">
+                @if (session()->has('loginError'))
+                <div class="alert alert-light-danger alert-dismissible fade show mb-5 text-center" role="alert">
+                    {{ session('loginError') }}
                 </div>
-                <div class="card-body p-4">
-                    <form action="/login" method="post">
-                        @csrf
-                        
-                        <div class="form-floating mb-3">
-                            <input name="login" type="text" class="form-control" id="floatingInput" placeholder="Username or Email">
-                            <label for="floatingInput">Username or Email</label>
+                @endif
+                <h1 class="auth-title">Log in.</h1>
+                <p class="auth-subtitle mb-5">Log in with your data that you entered during registration.</p>
+                
+                <form action="/login" method="POST">
+                    @csrf
+                    
+                    <div class="form-group position-relative has-icon-left mb-4">
+                        <input type="text" class="form-control form-control-xl" placeholder="Username or Email" name="login">
+                        <div class="form-control-icon">
+                            <i class="bi bi-person"></i>
                         </div>
-                        <div class="form-floating mb-3">
-                            <input name="password" type="password" class="form-control" id="floatingPassword" placeholder="Password">
-                            <label for="floatingPassword">Password</label>
-                        </div>
-                        
-                        <div class="d-grid my-4">
-                            <button type="submit" class="btn btn-primary px-4 shadow-sm">Login</button>
-                        </div>
-                    </form>
-                    <div class="text-center">
-                        <small>Don't have an account? <a href="/register">Register here!</a></small>
                     </div>
+                    <div class="form-group position-relative has-icon-left mb-4">
+                        <input type="password" class="form-control form-control-xl" placeholder="Password" name="password">
+                        <div class="form-control-icon">
+                            <i class="bi bi-shield-lock"></i>
+                        </div>
+                    </div>
+                    
+                    <button class="btn btn-primary btn-block btn-lg shadow-lg mt-5">Log in</button>
+                </form>
+                <div class="text-center mt-5 text-lg fs-4">
+                    <p class="text-gray-600">Don't have an account? <a href="/register" class="font-bold">Sign up</a>.</p>
                 </div>
             </div>
         </div>

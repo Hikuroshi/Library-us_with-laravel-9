@@ -46,6 +46,7 @@ class BookController extends Controller
     {
         $validatedData = $request->validate([
             'name' => 'required|max:100',
+            'writer' => 'required|max:100',
             'category_id' => 'required',
             'description' => 'required',
             'cover' => 'required|image|file|max:512',
@@ -53,6 +54,7 @@ class BookController extends Controller
         ]);
 
         $validatedData['name'] = ucwords($request->name);
+        $validatedData['writer'] = ucwords($request->writer);
         $validatedData['cover'] = $request->file('cover')->store('cover-store');
         $validatedData['books_file'] = $request->file('books_file')->store('books-store');
         $validatedData['user_id'] = auth()->user()->id;
@@ -102,6 +104,7 @@ class BookController extends Controller
     {
         $validatedData = $request->validate([
             'name' => 'required|max:100',
+            'writer' => 'required|max:100',
             'category_id' => 'required',
             'description' => 'required',
             'cover' => 'image|file|max:512',
@@ -123,6 +126,7 @@ class BookController extends Controller
         }
 
         $validatedData['name'] = ucwords($request->name);
+        $validatedData['writer'] = ucwords($request->writer);
         $validatedData['user_id'] = auth()->user()->id;
         $validatedData['slug'] = Str::of($request->name . "-" . Str::random(40))->slug('-');
 

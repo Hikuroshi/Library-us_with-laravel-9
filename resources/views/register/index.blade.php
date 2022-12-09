@@ -1,60 +1,77 @@
 @extends('layouts.main')
 
 @section('container')
-    <div class="container">
-        <div class="row my-5">
-            <div class="col-md-7 col-lg-5 m-auto">
-                <div class="card p-4">
-                    <h3 class="text-center fw-bold">Tambah Admin</h3>
-                    <form action="/register" method="post">
-                        @csrf
+<div id="auth">
+    <div class="row h-100">
+        <div class="col-lg-5 col-12 m-auto">
+            <div id="auth-left">
+                <h1 class="auth-title">Sign Up</h1>
+                <p class="auth-subtitle mb-5">Input your data to register to our website.</p>
+                
+                <form action="/register" method="POST">
+                    @csrf
 
-                        <div class="mb-3">
-                            <label for="name" class="form-label">Name: </label>
-                            <input type="text" class="form-control @error('name') is-invalid @enderror" id="name" name="name" required autofocus value="{{ old('name') }}">
-                            @error('name')
-                                <div class="invalid-feedback">
-                                    {{ $message }}
-                                </div>
-                            @enderror
+                    <div class="form-group position-relative has-icon-left mb-4">
+                        <input type="text" class="form-control form-control-xl @error('name') is-invalid @enderror" id="name" name="name" required autofocus value="{{ old('name') }}" placeholder="Name">
+                        <div class="form-control-icon">
+                            <i class="bi bi-person"></i>
                         </div>
-                        <div class="mb-3">
-                            <label for="username" class="form-label">Username: </label>
-                            <input type="text" class="form-control @error('username') is-invalid @enderror" id="username" name="username" required value="{{ old('username') }}">
-                            @error('username')
-                                <div class="invalid-feedback">
-                                    {{ $message }}
-                                </div>
-                            @enderror
-                        </div>
-                        <div class="mb-3">
-                            <label for="email" class="form-label">Email: </label>
-                            <input type="email" class="form-control @error('email') is-invalid @enderror" id="email" name="email" value="{{ old('email') }}">
-                            @error('email')
-                                <div class="invalid-feedback">
-                                    {{ $message }}
-                                </div>
-                            @enderror
-                        </div>
-                        <div class="mb-3">
-                            <label for="password" class="form-label">Password: </label>
-                            <input type="password" class="form-control @error('password') is-invalid @enderror" id="password" name="password" value="{{ old('password') }}">
-                            @error('password')
-                                <div class="invalid-feedback">
-                                    {{ $message }}
-                                </div>
-                            @enderror
-                        </div>
-                        
-                        <div class="d-grid my-4">
-                            <button class="btn btn-sm btn-primary" type="submit">Register Now</button>
-                        </div>
-                    </form>
-                    <div class="text-center">
-                        <small>Already have an account? <a href="/login">Login here!</a></small>
+                        @error('name')
+                            <div class="invalid-feedback">
+                                <i class="bx bx-radio-circle"></i>
+                                {{ $message }}
+                            </div>
+                        @enderror
                     </div>
+
+                    <div class="form-group position-relative has-icon-left mb-4">
+                        <input type="text" class="form-control form-control-xl @error('username') is-invalid @enderror" id="username" name="username" required value="{{ old('username') }}" placeholder="Username">
+                        <div class="form-control-icon">
+                            <i class="bi bi-person-bounding-box"></i>
+                        </div>
+                        @error('username')
+                            <div class="invalid-feedback">
+                                <i class="bx bx-radio-circle"></i>
+                                {{ $message }}
+                            </div>
+                        @enderror
+                    </div>
+
+                    <div class="form-group position-relative has-icon-left mb-4">
+                        <input type="email" class="form-control form-control-xl @error('email') is-invalid @enderror" id="email" name="email" required value="{{ old('email') }}" placeholder="Email">
+                        <div class="form-control-icon">
+                            <i class="bi bi-envelope"></i>
+                        </div>
+                        @error('email')
+                            <div class="invalid-feedback">
+                                <i class="bx bx-radio-circle"></i>
+                                {{ $message }}
+                            </div>
+                        @enderror
+                    </div>
+
+                    <div class="form-group position-relative has-icon-left mb-4">
+                        <input type="password" class="form-control form-control-xl @error('password') is-invalid @enderror" id="password" name="password" required value="{{ old('password') }}" placeholder="Password">
+                        <div class="form-control-icon">
+                            <i class="bi bi-shield-lock"></i>
+                        </div>
+                        @error('password')
+                            <div class="invalid-feedback">
+                                <i class="bx bx-radio-circle"></i>
+                                {{ $message }}
+                            </div>
+                        @enderror
+                    </div>
+
+                    <button class="btn btn-primary btn-block btn-lg shadow-lg mt-5">Sign Up</button>
+                </form>
+                <div class="text-center mt-5 text-lg fs-4">
+                    <p class='text-gray-600'>Already have an account?
+                        <a href="/login" class="font-bold">Login</a>.
+                    </p>
                 </div>
             </div>
         </div>
     </div>
+</div>    
 @endsection

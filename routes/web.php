@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\BookController;
 use App\Http\Controllers\BookSaverController;
+use App\Http\Controllers\BookStatusController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\PerpusController;
 use App\Http\Controllers\RegisterController;
@@ -36,6 +37,12 @@ Route::controller(BookSaverController::class)->group(function(){
     Route::get('/dashboard/save-my-book', 'index');
 });
 
+Route::controller(BookStatusController::class)->group(function(){
+    Route::get('/dashboard/status-book', 'index')->middleware('admin');
+    Route::get('/dashboard/status-book/{book:slug}', 'show')->middleware('admin');
+    Route::put('/dashboard/status-book/{book:slug}', 'update')->middleware('admin');
+});
+
 Route::controller(LoginController::class)->group(function(){
     Route::get('/login', 'index')->name('login')->middleware('guest');
     Route::post('/login', 'authenticate');
@@ -46,6 +53,8 @@ Route::controller(LoginController::class)->group(function(){
 Route::controller(RegisterController::class)->group(function(){
     Route::get('/register', 'index');
     Route::post('/register', 'store');
+    Route::get('/start-librarian', 'librarian');
+    Route::put('/start-librarian', 'librarian_up');
 });
 
 Route::redirect('/dashboard', '/dashboard/books');

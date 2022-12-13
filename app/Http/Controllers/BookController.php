@@ -17,9 +17,15 @@ class BookController extends Controller
      */
     public function index()
     {
+        if(auth()->user()->roles == 'admin'){
+            $admin = Book::all();
+        } else {
+            $admin = Book::where('user_id', auth()->user()->id)->get();
+        }
+
         return view('dashboard.books.index', [
             'title' => 'Library dashboard',
-            'books' => Book::where('user_id', auth()->user()->id)->get(),
+            'books' => $admin,
         ]);
     }
 

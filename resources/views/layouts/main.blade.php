@@ -16,7 +16,7 @@
                 <div class="header-top">
                     <div class="container">
                         {{-- <div class="logo">
-                            <a href="index.html"><img src="/img/perpus-bg.png" alt="Logo"></a>
+                            <a href="#"><img src="/img/perpus-bg.png" alt="Logo"></a>
                         </div> --}}
                         <div class="avatar-md2">
                             <a href="/"><img src="/img/perpus-bg.png" class="img-fluid" width="40" alt="logo"><span class="fs-4 ms-2 fw-bold">Library Us</span></a>
@@ -35,16 +35,17 @@
                                             <img src="/assets/images/faces/1.jpg" alt="Avatar">
                                         </div>
                                         <div class="text">
-                                            <h6 class="user-dropdown-name">John Ducky</h6>
-                                            <p class="user-dropdown-status text-sm text-muted">Member</p>
+                                            <h6 class="user-dropdown-name">{{ auth()->user()->name }}</h6>
+                                            <p class="user-dropdown-status text-sm text-muted">{{ auth()->user()->roles }}</p>
                                         </div>
                                     </a>
                                     <ul class="dropdown-menu dropdown-menu-end shadow-lg" aria-labelledby="topbarUserDropdown">
+                                        <li>
+                                            <h6 class="dropdown-header">Hello, {{ auth()->user()->username }}</h6>
+                                        </li>
                                         @can('librarian')
                                         <li><a class="dropdown-item" href="/dashboard/books">Librarian</a></li>
                                         @endcan
-                                        <li><a class="dropdown-item" href="#">My Account</a></li>
-                                        <li><a class="dropdown-item" href="#">Settings</a></li>
                                         <li><hr class="dropdown-divider"></li>
                                         <li><a class="dropdown-item" href="/logout">Logout</a></li>
                                     </ul>
@@ -60,56 +61,38 @@
                 <nav class="main-navbar">
                     <div class="container">
                         <ul>
-                            <li class="menu-item">
-                                <a href="index.html" class='menu-link'>
+                            <li class="menu-item {{ Request::is('/') ? 'active' : '' }}">
+                                <a href="/" class='menu-link'>
                                     <i class="bi bi-grid-fill"></i>
                                     <span>Home</span>
                                 </a>
                             </li>
-                            <li class="menu-item active has-sub">
-                                <a href="#" class='menu-link'>
-                                    <i class="bi bi-grid-1x2-fill"></i>
-                                    <span>Kategori</span>
+                            <li class="menu-item {{ Request::is('/books/*') ? 'active' : '' }}">
+                                <a href="/books" class='menu-link'>
+                                    <i class="bi bi-grid-fill"></i>
+                                    <span>Books</span>
                                 </a>
-                                <div class="submenu ">
-                                    <div class="submenu-group-wrapper">
-                                        <ul class="submenu-group">
-                                            <li class="submenu-item">
-                                                <a class="submenu-link" href="#">Buku Pelajaran</a>
-                                            </li>
-                                            <li class="submenu-item">
-                                                <a class="submenu-link" href="#">Buku Sejarah</a>
-                                            </li>
-                                            <li class="submenu-item">
-                                                <a class="submenu-link" href="#">Novel</a>
-                                            </li>
-                                            <li class="submenu-item">
-                                                <a class="submenu-link" href="#">Komik</a>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </div>
                             </li>
-                            <li class="menu-item">
-                                <a href="index.html" class='menu-link'>
+                            <li class="menu-item {{ Request::is('/feedback') ? 'active' : '' }}">
+                                <a href="#" class='menu-link'>
                                     <i class="bi bi-grid-fill"></i>
                                     <span>Feedback</span>
                                 </a>
                             </li>
-                            <li class="menu-item">
-                                <a href="index.html" class='menu-link'>
+                            <li class="menu-item {{ Request::is('/about') ? 'active' : '' }}">
+                                <a href="#" class='menu-link'>
                                     <i class="bi bi-grid-fill"></i>
                                     <span>About</span>
                                 </a>
                             </li>
-                            @can('librarian')
-                            <li class="menu-item">
-                                <a href="/dashboard/books" class='menu-link'>
+                            @auth
+                            <li class="menu-item {{ Request::is('/start-librarian/*') ? 'active' : '' }}">
+                                <a href="/start-librarian" class='menu-link'>
                                     <i class="bi bi-grid-fill"></i>
                                     <span>Librarian</span>
                                 </a>
                             </li>
-                            @endcan
+                            @endauth
                         </ul>
                     </div>
                 </nav>

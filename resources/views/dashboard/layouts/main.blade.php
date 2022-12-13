@@ -41,12 +41,20 @@
                 <div class="sidebar-menu">
                     <ul class="menu">
                         <li class="sidebar-title">Menu</li>
-                        <li class="sidebar-item active ">
+                        <li class="sidebar-item {{ Request::is('dashboard/books*') ? 'active' : '' }}">
                             <a href="/dashboard/books" class='sidebar-link'>
                                 <i class="bi bi-grid-fill"></i>
                                 <span>Librarian</span>
                             </a>
                         </li>
+                        @can('admin')
+                            <li class="sidebar-item {{ Request::is('dashboard/status-book*') ? 'active' : '' }}">
+                                <a href="/dashboard/status-book" class='sidebar-link'>
+                                    <i class="bi bi-grid-fill"></i>
+                                    <span>Status Book</span>
+                                </a>
+                            </li>
+                        @endcan
                     </ul>
                 </div>
             </div>

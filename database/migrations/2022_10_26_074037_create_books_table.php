@@ -25,6 +25,7 @@ return new class extends Migration
             $table->string('description');
             $table->string('cover');
             $table->string('books_file');
+            $table->string('status')->default('pending-review');
             $table->timestamps();
         });
     }

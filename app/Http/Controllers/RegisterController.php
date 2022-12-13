@@ -28,7 +28,29 @@ class RegisterController extends Controller
         $validatedData['password'] = Hash::make($validatedData['password']);
         User::create($validatedData);
 
-        return redirect('/dashboard/books')->with('success', 'Akun baru berhasil ditambahkan!');
+        return redirect('/login')->with('success', 'New Account has been added');
     }
 
+    public function librarian()
+    {
+        if (auth()->user()->roles == 'librarian' || auth()->user()->roles == 'admin') {
+            return redirect('/dashboard/books');
+        } else {
+            return view('register.librarian', [
+                'title' => 'Become a Librarian'
+            ]);
+        }
+    }
+
+    public function librarian_up(Request $request)
+    {
+        $validatedData = $request->validate([
+            'roles' => 'required',
+        ]);
+
+        $validatedData['roles'] = 'librarian';
+        User::where('id', auth()->user()->id)->update($validatedData);
+
+        return redirect('/dashboard/books')->with('success', "Congratulations, you've become a Librarian");
+    }
 }

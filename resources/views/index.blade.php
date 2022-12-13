@@ -1,8 +1,7 @@
 @extends('layouts.main')
 
 @section('container')
-<div class="container">
-    <div class="row my-4">
+    <div class="row mb-4">
         <div class="col-md-6 m-auto">
             <form action="/books">
                 @if(request('category'))
@@ -12,9 +11,10 @@
                 <input type="hidden" name="author" value="{{ request('author') }}">
                 @endif
                 <div class="input-group">
-                    <input class="form-control shadow-sm" type="search" placeholder="Search" name="search" value="{{ request('search') }}">
-                    <button type="submit" class="btn btn-danger">Search</button>
-                    <button type="button" class="btn btn-danger dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-expanded="false">
+                    <span class="input-group-text" id="basic-addon1"><i class="bi bi-search"></i></span>
+                    <input type="text" name="search" class="form-control" placeholder="Search book" aria-label="Search book" aria-describedby="button-addon2" value="{{ request('search') }}">
+                    <button class="btn btn-primary" type="submit" id="button-addon2">Search</button>
+                    <button type="button" class="btn btn-primary dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-expanded="false">
                         <span class="visually-hidden">Filter</span>
                     </button>
                     <ul class="dropdown-menu">
@@ -24,7 +24,6 @@
                     </ul>
                 </div>
             </form>
-            
         </div>
     </div>
 
@@ -50,20 +49,22 @@
         </button>
     </div>
 
-    <div class="row row-cols-1 row-cols-md-3 g-4 mt-3">
+    <div class="row row-cols-1 row-cols-md-4 g-4 mt-3">
         @foreach ($books as $book)
-            <div class="col">
-                <div class="card h-100">
-                    <a href="/books/{{ $book->slug }}">
-                        <img src="{{ asset('storage/' . $book->cover) }}" class="card-img-top" alt="{{ $book->name }}">
-                    </a>
-                    <div class="card-body">
-                        <h5 class="card-title">{{ $book->name }}</h5>
-                        <p class="card-text">{{ Str::words($book->description, 30) }}</p>
+            @if ($book->status == 'published')
+                <div class="col">
+                    <div class="card h-100">
+                        <a href="/books/{{ $book->slug }}">
+                            <img src="{{ asset('storage/' . $book->cover) }}" class="card-img-top" alt="{{ $book->name }}">
+                        </a>
+                        <div class="card-body">
+                            <h5 class="card-title">{{ $book->name }}</h5>
+                            <small class="card-text text-muted">{{ $book->category->name }}</small>
+                            <p class="card-text">{{ Str::words($book->description, 30) }}</p>
+                        </div>
                     </div>
                 </div>
-            </div>
+            @endif
         @endforeach
     </div>
-</div>
 @endsection
